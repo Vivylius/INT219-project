@@ -1,0 +1,45 @@
+<div class="container">
+    <div *ngIf='signupSuccess' class="alert alert-success alert-dismissible fade show m-3" role="alert">
+        You have signed up successfully 😃
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="my-5">
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter email" id="email" formControlName="email" autofocus>
+            <small id="emailHelp" class="form-text text-danger" *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">Example email: abc@gmail.com</small>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName="password">
+                    <small id="pwdHelp" class="form-text text-danger" *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">Password must contain: one upercase, one lowercase letter and between 6 to 20 characters.</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Confirm password" id="pwd" formControlName="confirmPassword">
+                    <small id="confirmPwdHelp" class="form-text text-danger" *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched">Confirm the password.</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" formControlName="terms">Agree <strong>Terms and Conditions*</strong>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 my-1">
+                <button [disabled]='signupForm.invalid' class="text-center" class="btn btn-primary">Signup</button>
+            </div>
+            <div class="col-sm-3 my-1" [hidden]='!signupSuccess'>
+                <p>Successfully signed up! <a class="badge badge-info" routerLink="/login">Login</a></p>
+            </div>
+        </div>
+    </form>
+</div>

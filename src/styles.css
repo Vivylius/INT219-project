@@ -1,0 +1,14 @@
+.fullscreen {
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+    max-width: 100vw;
+}
+
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
